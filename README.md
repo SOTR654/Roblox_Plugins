@@ -1,8 +1,8 @@
 # Roblox Plugins
 Source code of my plugins.
 
-# Devforum
-https://devforum.roblox.com/t/small-plugin-path-to-instance/1641945
+# Plugins
+[Path to instance](https://devforum.roblox.com/t/small-plugin-path-to-instance/1641945)
 
 # Contact
 * **Discord:** SOTR654#3002
