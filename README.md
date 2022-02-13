@@ -1,6 +1,3 @@
-# Roblox Plugins
-Source code of my plugins.
-
 # Plugins
 [Path to instance](https://devforum.roblox.com/t/small-plugin-path-to-instance/1641945)
 
