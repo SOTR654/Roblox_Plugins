@@ -1,5 +1,5 @@
 # Plugins
-[Path to instance](https://devforum.roblox.com/t/small-plugin-path-to-instance/1641945)
+* [Path to instance](https://devforum.roblox.com/t/small-plugin-path-to-instance/1641945)
 
 # Contact
 * **Discord:** SOTR654#3002
