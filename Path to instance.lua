@@ -1,4 +1,4 @@
-	--			Plugin action			--
+--		Plugin action		--
 local Action = plugin:CreatePluginAction(
 	"Path to instance",
 	"Path to instance",
@@ -8,7 +8,7 @@ local Action = plugin:CreatePluginAction(
 )
 
 
---				Variables				--
+--		Variables		--
 local ReplaceLocal = {
 	['game:GetService("StarterGui")'] = 'game:GetService("Players").LocalPlayer.PlayerGui',
 	['game:GetService("StarterPack")'] = 'game:GetService("Players").LocalPlayer.Backpack',
@@ -24,11 +24,11 @@ end
 
 
 
---			Triggered				--
+--		Triggered		--
 Action.Triggered:Connect(function()
 	local Current = game:GetService("StudioService").ActiveScript
 	for N, Target in pairs(game:GetService("Selection"):Get()) do		
-		--				Get path					--
+		--		Get path		--
 		local result = {Target}
 		local Parent = Target.Parent
 		while Parent and Parent ~= game do
@@ -51,19 +51,17 @@ Action.Triggered:Connect(function()
 			end
 		end
 
-
-
-    --    Diferent				--
+		--		Diferent		--
 		if Current:IsA("LocalScript") then
 			for Check, Replacement in pairs(ReplaceLocal) do
 				local Sub = Path:sub(0, #Check)
-				if Sub ~= Check then					continue					end
+				if Sub ~= Check then		continue		end
 				Path = Replacement .. string.sub(Path, #Check+1, #Path)
 			end
 		end
 
 
-		--				Replace if not valid				--
+		--		Replace if not valid		--
 		local Name = Target.Name
 		Name = table.concat(Name:split(" "), "_")
 		if Name:gsub("_", "b"):match("%p") then
@@ -71,7 +69,7 @@ Action.Triggered:Connect(function()
 		end
 		
 
-		--			Insert			--
+		--		Insert		--
 		local Base = (Target:IsA("ModuleScript") and 'local %s = require(%s)\n') or 'local %s = %s\n'
 		local Success = pcall(function()
 			Current.Source = Base:format(Name, Path) .. Current.Source
