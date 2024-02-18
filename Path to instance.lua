@@ -41,6 +41,15 @@ end
 ActionMain.Triggered:Connect(function()
 	local TS = game:GetService("StudioService").ActiveScript
 	if not TS then		return		end
+	
+	--		Before		--
+	local Document = SES:FindScriptDocument(TS)
+	if not Document then		return		end
+	
+	local Line, Char = Document:GetSelection()
+	
+	--		Set		--
+	local N = 0
 	for Index, Target in pairs(game:GetService("Selection"):Get()) do	
 		--		PathList		--
 		local Parent, PathList = Target.Parent, {Target}
@@ -92,4 +101,8 @@ ActionMain.Triggered:Connect(function()
 			print("Path to instance error:", Error)
 		end
 	end
+	
+	--		Selection		--
+	local Success = pcall(Document.ForceSetSelectionAsync, Document, Line, Char)
+	if not Success then		pcall(Document.ForceSetSelectionAsync, Document, Line, 1)	end
 end)
